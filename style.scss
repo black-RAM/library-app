@@ -4,16 +4,22 @@ body, h1, h2, h3, h4 {
 }
 button {
   all: unset;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 // color-scheme variables
 $light-sandpaper: #fcf8f5;
 $cream: hsl(25, 60%, 85%);
 $dark-cream: #d3c4b3;
+$btn-danger: #e61942;
+$btn-green: lightgreen;
+$btn-default: lightgray;
 
 body {
   background-color: $light-sandpaper;
   font-family: 'raleway', Arial, Helvetica, sans-serif;
+  font-size: 18px;
 }
 
 header {
@@ -49,12 +55,19 @@ header {
   > div{
     display: flex;
     justify-content: space-around;
-    .check>img {
-      height: 40px;
+    gap: 10px;
+
+    .read.true {
+      background-color: $btn-green;
     }
-    .delete > img{
-      height: 40px;
-      
+    .read.false{
+      background-color: $btn-default;
+    }
+    .delete-btn {
+      background-color: $btn-danger;
+      img {
+        height: 18px;
+      }
     }
   }
 }

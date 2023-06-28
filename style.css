@@ -4,11 +4,14 @@ body, h1, h2, h3, h4 {
 
 button {
   all: unset;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 body {
   background-color: #fcf8f5;
   font-family: "raleway", Arial, Helvetica, sans-serif;
+  font-size: 18px;
 }
 
 header {
@@ -45,10 +48,17 @@ header h1 {
 .book-card > div {
   display: flex;
   justify-content: space-around;
+  gap: 10px;
 }
-.book-card > div .check > img {
-  height: 40px;
+.book-card > div .read.true {
+  background-color: lightgreen;
 }
-.book-card > div .delete > img {
-  height: 40px;
+.book-card > div .read.false {
+  background-color: lightgray;
+}
+.book-card > div .delete-btn {
+  background-color: #e61942;
+}
+.book-card > div .delete-btn img {
+  height: 18px;
 }/*# sourceMappingURL=style.css.map */
