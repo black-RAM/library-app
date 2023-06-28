@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library</title>
+
+  <link rel="shortcut icon" href="assets/icon.png" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+
+  <!-- Playfair black, and Raleway 400 google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Raleway&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Library</h1>
+  </header>
+  <main class="library">
+    <article class="book-card">
+      <h3 class="book-title">How to Win Friends and Influence People</h3>
+      <h4 class="book-byline">by <span class="author">Dale Carnegie</span></h4>
+      <button type="button">
+        <img src="assets/check-icon.png" alt="read">
+      </button>
+      <button type="button">
+        <img src="assets/delete-icon.png" alt="delete">
+      </button>
+    </article>
+
+    <article class="book-card">
+      <h3 class="book-title">Atomic Habits</h3>
+      <h4 class="book-byline">by <span class="Author">James Clear</span></h4>
+      <button type="button">
+        <img src="assets/check-icon.png" alt="read">
+      </button>
+      <button type="button">
+        <img src="assets/delete-icon.png" alt="delete">
+      </button>
+    </article>
+
+    <article class="book-card">
+      <h3 class="book-title">Prince Caspian</h3>
+      <h4 class="book-byline">by <span class="author">C.S. Lewis</span></h4>
+      <button type="button">
+        <img src="assets/check-icon.png" alt="read">
+      </button>
+      <button type="button">
+        <img src="assets/delete-icon.png" alt="delete">
+      </button>
+    </article>
+
+    <article class="book-card">
+      <h3 class="book-title">The Voyage of the Dawn Treader</h3>
+      <h4 class="book-byline">by <span>Clive Staples Lewis</span></h4>
+      <button type="button">
+        <img src="assets/check-icon.png" alt="read">
+      </button>
+      <button type="button">
+        <img src="assets/delete-icon.png" alt="delete">
+      </button>
+    </article>
+  </main>
+
+  <aside>
+    <h2>Add a Book</h2>
+    <form>
+      <input type="text" name="Title" id="" placeholder="Title">
+      <input type="text" name="author" id="" placeholder="Author">
+      <input type="number" name="pages" id="" placeholder="Page number">
+      <button type="submit">Add</button>
+    </form>
+  </aside>
+</body>
+</html>
