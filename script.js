@@ -13,6 +13,4 @@ function addBookToLibrary (title, author, pages, wasRead) {
   library.push(book);
 }
 
-// test
 addBookToLibrary("Prince Caspian", "C.S. Lewis", 185, true);
-console.log(library);

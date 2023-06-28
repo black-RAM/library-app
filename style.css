@@ -1,1 +1,54 @@
-/*# sourceMappingURL=style.css.map */
+body, h1, h2, h3, h4 {
+  margin: 0;
+}
+
+button {
+  all: unset;
+}
+
+body {
+  background-color: #fcf8f5;
+  font-family: "raleway", Arial, Helvetica, sans-serif;
+}
+
+header {
+  font-family: "Playfair Display", "Times New Roman", Times, serif;
+  background-color: hsl(25, 60%, 85%);
+  padding: 20px;
+}
+header h1 {
+  font-size: 60px;
+}
+
+.library {
+  padding: 50px max(5vw, 10px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.book-card {
+  flex: 250px;
+  padding: 30px;
+  text-align: center;
+  background-color: #d3c4b3;
+}
+.book-card h3 {
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+.book-card h4 {
+  font-style: italic;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.book-card > div {
+  display: flex;
+  justify-content: space-around;
+}
+.book-card > div .check > img {
+  height: 40px;
+}
+.book-card > div .delete > img {
+  height: 40px;
+}/*# sourceMappingURL=style.css.map */

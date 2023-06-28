@@ -1,0 +1,60 @@
+// override defaults
+body, h1, h2, h3, h4 {
+  margin: 0;
+}
+button {
+  all: unset;
+}
+
+// color-scheme variables
+$light-sandpaper: #fcf8f5;
+$cream: hsl(25, 60%, 85%);
+$dark-cream: #d3c4b3;
+
+body {
+  background-color: $light-sandpaper;
+  font-family: 'raleway', Arial, Helvetica, sans-serif;
+}
+
+header {
+  font-family: 'Playfair Display', 'Times New Roman', Times, serif;
+  background-color: $cream;
+  padding: 20px;
+  h1{
+    font-size: 60px;
+  }
+}
+
+.library {
+  padding: 50px max(5vw, 10px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.book-card {
+  flex: 250px;
+  padding: 30px;
+  text-align: center;
+  background-color: $dark-cream;
+  h3{
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+  h4 {
+    font-style: italic;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  > div{
+    display: flex;
+    justify-content: space-around;
+    .check>img {
+      height: 40px;
+    }
+    .delete > img{
+      height: 40px;
+      
+    }
+  }
+}
