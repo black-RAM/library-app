@@ -13,9 +13,18 @@ function addBookToLibrary (title, author, pages, wasRead) {
   library.push(book);
 }
 
-addBookToLibrary("Atomic Habits", "James Clear", 200, true);
-addBookToLibrary("Prince Caspian", "C.S. Lewis", 170, false);
-addBookToLibrary("The Voyage of the Dawn Treader", "Clive Staples Lewis", 140, true);
+document.getElementById("book-form").addEventListener("submit", function(event) {
+  event.preventDefault();
+  let formData = {
+    title: document.getElementById("form-title").value,
+    author: document.getElementById("form-author").value,
+    pages: parseInt(document.getElementById("form-pages").value),
+    wasRead: document.getElementById("form-read").value == "on" ? true : false
+  };
+  addBookToLibrary(
+    formData.title, formData.author, formData.pages, formData.wasRead
+  )
+});
 
 function libraryToDOM(books) {
   const bookContainer = document.createElement('main');
