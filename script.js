@@ -8,7 +8,7 @@ class Book{
   };
 };
 
-function libraryToDOM(books) {
+function createBookCard(books) {
   const bookContainer = document.createElement('main');
   bookContainer.classList.add('library');
 
@@ -77,19 +77,22 @@ function updateDOM() {
   const libraryContainer = document.getElementById('library-container');
   libraryContainer.innerHTML = ''; // Clear the previous contents
 
-  const booksDOM = libraryToDOM(library);
+  const booksDOM = createBookCard(library);
   libraryContainer.appendChild(booksDOM);
 }
 
-document.getElementById("book-form").addEventListener("submit", function(event) {
+function handleFormSubmission(event) {
   event.preventDefault();
+
   let formData = {
     title: document.getElementById("form-title").value,
     author: document.getElementById("form-author").value,
     pages: parseInt(document.getElementById("form-pages").value),
-    wasRead: document.getElementById("form-read").value == "on" ? true : false
+    wasRead: document.getElementById("form-read").checked
   };
-  addBookToLibrary(
-    formData.title, formData.author, formData.pages, formData.wasRead
-  )
-});
+  
+  addBookToLibrary(formData.title, formData.author, formData.pages, formData.wasRead);
+}
+
+const form = document.getElementById('book-form');
+form.addEventListener("submit", handleFormSubmission);
