@@ -8,24 +8,6 @@ class Book{
   };
 };
 
-function addBookToLibrary (title, author, pages, wasRead) {
-  let book = new Book(title, author, pages, wasRead);
-  library.push(book);
-}
-
-document.getElementById("book-form").addEventListener("submit", function(event) {
-  event.preventDefault();
-  let formData = {
-    title: document.getElementById("form-title").value,
-    author: document.getElementById("form-author").value,
-    pages: parseInt(document.getElementById("form-pages").value),
-    wasRead: document.getElementById("form-read").value == "on" ? true : false
-  };
-  addBookToLibrary(
-    formData.title, formData.author, formData.pages, formData.wasRead
-  )
-});
-
 function libraryToDOM(books) {
   const bookContainer = document.createElement('main');
   bookContainer.classList.add('library');
@@ -85,5 +67,29 @@ function libraryToDOM(books) {
   return bookContainer;
 }
 
-const libraryContainer = document.getElementById('library-container');
-libraryContainer.appendChild(libraryToDOM(library));
+function addBookToLibrary(title, author, pages, wasRead) {
+  let book = new Book(title, author, pages, wasRead);
+  library.push(book);
+  updateDOM();
+}
+
+function updateDOM() {
+  const libraryContainer = document.getElementById('library-container');
+  libraryContainer.innerHTML = ''; // Clear the previous contents
+
+  const booksDOM = libraryToDOM(library);
+  libraryContainer.appendChild(booksDOM);
+}
+
+document.getElementById("book-form").addEventListener("submit", function(event) {
+  event.preventDefault();
+  let formData = {
+    title: document.getElementById("form-title").value,
+    author: document.getElementById("form-author").value,
+    pages: parseInt(document.getElementById("form-pages").value),
+    wasRead: document.getElementById("form-read").value == "on" ? true : false
+  };
+  addBookToLibrary(
+    formData.title, formData.author, formData.pages, formData.wasRead
+  )
+});
