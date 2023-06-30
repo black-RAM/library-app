@@ -6,6 +6,9 @@ class Book{
     this.pages = pages;
     this.wasRead = wasRead;
   };
+  toggleRead () {
+    this.wasRead = !this.wasRead;
+  }
 };
 
 function createBookCards(books) {
@@ -35,7 +38,7 @@ function createBookCards(books) {
     const readButton = document.createElement('button');
     readButton.setAttribute('type', 'button');
     readButton.classList.add('read', book.wasRead ? 'true' : 'false');
-    readButton.textContent = 'Read';
+    readButton.textContent = `${!book.wasRead ? 'Not' : ''} Read`;
 
     const pages = document.createElement('p');
     pages.setAttribute('id', 'pages');
@@ -119,7 +122,7 @@ bookCardsContainer.addEventListener('click', function(event) {
     const deleteButtonIndex = deleteButtons.indexOf(target);
 
     if (deleteButtonIndex !== -1) {
-      const bookCard = bookCards[deleteButtonIndex];
+      const bookCard = target.closest('.book-card');
       library.splice(bookCard.dataset.index);
       updateDOM();
 
@@ -127,7 +130,14 @@ bookCardsContainer.addEventListener('click', function(event) {
       deleteButtons.splice(deleteButtonIndex, 1);
     }
   }
+  // Handle the "Read" button click
   else if (target.classList.contains('read')) {
-    // Handle the "Read" button click
+    const bookCard = target.closest('.book-card');
+    const index = bookCards.indexOf(bookCard);
+    if (index !== -1) {
+      const book = library[index];
+      book.toggleRead();
+      updateDOM();
+    };
   }
 });
