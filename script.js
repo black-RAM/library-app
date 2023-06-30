@@ -8,13 +8,14 @@ class Book{
   };
 };
 
-function createBookCard(books) {
+function createBookCards(books) {
   const bookContainer = document.createElement('main');
   bookContainer.classList.add('library');
 
-  books.forEach(book => {
+  books.forEach((book, index) => {
     const article = document.createElement('article');
     article.classList.add('book-card');
+    article.setAttribute('data-index', `${index}`); // associate book card with index of actual book object
 
     const hgroup = document.createElement('hgroup');
 
@@ -54,6 +55,8 @@ function createBookCard(books) {
     deleteButton.appendChild(deleteIcon);
     deleteButton.appendChild(deleteText);
 
+    deleteButtons.push(deleteButton);
+
     buttonDiv.appendChild(readButton);
     buttonDiv.appendChild(pages);
     buttonDiv.appendChild(deleteButton);
@@ -62,6 +65,7 @@ function createBookCard(books) {
     article.appendChild(buttonDiv);
 
     bookContainer.appendChild(article);
+    bookCards.push(article);
   });
 
   return bookContainer;
@@ -77,8 +81,11 @@ function updateDOM() {
   const libraryContainer = document.getElementById('library-container');
   libraryContainer.innerHTML = ''; // Clear the previous contents
 
-  const booksDOM = createBookCard(library);
+  const booksDOM = createBookCards(library);
   libraryContainer.appendChild(booksDOM);
+  
+  deleteButtons = [...document.getElementsByClassName('delete-btn')];
+  bookCards = [...document.getElementsByClassName('book-card')];
 }
 
 function handleFormSubmission(event) {
@@ -96,3 +103,31 @@ function handleFormSubmission(event) {
 
 const form = document.getElementById('book-form');
 form.addEventListener("submit", handleFormSubmission);
+
+// Delete button functionality
+
+const bookCardsContainer = document.getElementById('library-container');
+let bookCards = [];
+let deleteButtons = [];
+
+// Event bubbling since book cards are dynamically added
+bookCardsContainer.addEventListener('click', function(event) {
+  const target = event.target;
+  
+  // deletion logic
+  if (target.classList.contains('delete-btn')) {
+    const deleteButtonIndex = deleteButtons.indexOf(target);
+
+    if (deleteButtonIndex !== -1) {
+      const bookCard = bookCards[deleteButtonIndex];
+      library.splice(bookCard.dataset.index);
+      updateDOM();
+
+      // Remove button corresponding to deleted book card
+      deleteButtons.splice(deleteButtonIndex, 1);
+    }
+  }
+  else if (target.classList.contains('read')) {
+    // Handle the "Read" button click
+  }
+});
